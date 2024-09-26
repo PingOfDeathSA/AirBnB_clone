@@ -14,6 +14,7 @@ from models.review import Review
 
 
 def parse(arg):
+    """Helper function to parse command line arguments"""
     curly_braces = re.search(r"\{(.*?)\}", arg)
     brackets = re.search(r"\[(.*?)\]", arg)
     if curly_braces is None:
@@ -50,11 +51,11 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def emptyline(self):
-        """Do nothing upon receiving an empty line."""
+        """Do nothing when an empty line + ENTER is input."""
         pass
 
     def default(self, arg):
-        """Default behavior for cmd module when input is invalid"""
+        """Default behavior for invalid input"""
         argdict = {
             "all": self.do_all,
             "show": self.do_show,
